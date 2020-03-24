@@ -1,0 +1,171 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style2 {
+            text-align: center;
+            width: 383px;
+        }
+        .auto-style5 {
+            width: 383px;
+        }
+        .auto-style10 {
+            text-align: center;
+            width: 11px;
+        }
+        .auto-style11 {
+            width: 11px;
+        }
+        .auto-style17 {
+            width: 100%;
+            height: 230px;
+        }
+        .auto-style28 {
+            text-align: left;
+            width: 383px;
+        }
+        .auto-style29 {
+            text-align: left;
+        }
+        .auto-style30 {
+            width: 299px;
+        }
+        .auto-style32 {
+            text-align: right;
+        }
+        .auto-style35 {
+            width: 170px;
+        }
+        .auto-style36 {
+            font-size: medium;
+        }
+        </style>
+    </head>
+<script>
+    function call_applyChanges() {
+        window.location = 'skp:call_applyChanges';
+    }
+    function call_insertVelMode() {
+        var selectedIndex = document.getElementById("insertVelMode").selectedIndex;
+        if (selectedIndex == 0) {
+            document.getElementById("UmagValue").disabled = true;
+
+            document.getElementById("UxValue").disabled = false;
+            document.getElementById("UyValue").disabled = false;
+            document.getElementById("UzValue").disabled = false;
+        }
+        else {
+            document.getElementById("UmagValue").disabled = false;
+
+            document.getElementById("UxValue").disabled = true;
+            document.getElementById("UyValue").disabled = true;
+            document.getElementById("UzValue").disabled = true;
+        }
+    }
+</script>
+<body style="width: 339px; height: 372px">
+    <table class="auto-style17">
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5"><span class="auto-style36">Boundary Type: </span> <em><span class="auto-style36">inlet</span></em></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11" rowspan="2">&nbsp;</td>
+            <td class="auto-style5">
+                Momentum<br />
+            </td>
+            <td rowspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style28" style="border: thin solid #C0C0C0">
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            <select id="insertVelMode" class="auto-style30" name="D1" onchange="call_insertVelMode()">
+                                <option value="components" selected="selected">components</option>
+                                <option value="Normal to Boundary">Normal to Boundary</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style29">
+                            <table style="width:100%;">
+                                <tr>
+                                    <td>x-velocity [m/s]:</td>
+                                    <td class="auto-style32"> <input id="UxValue" class="auto-style35" type="text" value="0.0" /></td>
+                                </tr>
+                                <tr>
+                                    <td>y-velocity [m/s]: </td>
+                                    <td class="auto-style32"> <input id="UyValue" class="auto-style35" type="text" value="0.0" /></td>
+                                </tr>
+                                <tr>
+                                    <td>z-velocity [m/s]:
+                </td>
+                                    <td class="auto-style32">
+                <input id="UzValue" class="auto-style35" type="text" value="0.0" /></td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>Magnitude [m/s]:</td>
+                                    <td class="auto-style32">
+                                        <input id="UmagValue" class="auto-style35" disabled="disabled" type="text" value="0.0" /></td>
+                                </tr>
+                            </table></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <table style="width:100%;">
+                    <tr>
+                        <td>Temperature [k]:&nbsp;&nbsp; </td>
+                        <td class="auto-style32"> <input id="TValue" class="auto-style35" type="text" value="300" /></td>
+                    </tr>
+                </table>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style10">&nbsp;</td>
+            <td class="auto-style2">
+                <input id="applyChanges" type="button" value="Apply" onclick="call_applyChanges()"/></td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    </body>
+</html>

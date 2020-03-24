@@ -1,0 +1,224 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            text-align: center;
+        }
+        .auto-style2 {
+            width: 62px;
+        }
+        .auto-style3 {
+            text-align: right;
+        }
+        .auto-style4 {
+            width: 151px;
+        }
+        .auto-style5 {
+            width: 150px;
+        }
+        .auto-style6 {
+            font-size: medium;
+        }
+    </style>
+    </head>
+<script>
+
+    var solver_time = "--solver_time--";
+
+    window.onload = function set_time() {
+        if (solver_time == "steady") {
+            document.getElementById("steady").checked = true;
+            document.getElementById("transient").checked = false;
+
+            document.getElementById("steady").value = 1;
+            document.getElementById("transient").value = 0;
+        }
+        else if (solver_time=="transient") {
+            document.getElementById("steady").checked = false;
+            document.getElementById("transient").checked = true;
+
+            document.getElementById("steady").value = 0;
+            document.getElementById("transient").value = 1;
+        }
+    }
+
+    function call_steady() {
+        document.getElementById("steady").checked = true;
+        document.getElementById("transient").checked = false;
+
+        document.getElementById("steady").value = 1;
+        document.getElementById("transient").value = 0;
+
+        var query = 'skp:call_steady';
+        window.location.href = query;
+    }
+
+    function call_transient() {
+        document.getElementById("steady").checked = false;
+        document.getElementById("transient").checked = true;
+
+        document.getElementById("steady").value = 0;
+        document.getElementById("transient").value = 1;
+
+        var query = 'skp:call_transient';
+        window.location.href = query;
+    }
+
+    function call_initialize() {
+        var query = 'skp:call_initialize';
+        window.location.href = query;
+    }
+
+    function call_run() {
+        var query = 'skp:call_run';
+        window.location.href = query;
+    }
+
+    
+
+</script>
+<body style="width: 305px; height: 512px">
+    <table style="width:100%;">
+        <tr>
+            <td>&nbsp;</td>
+            <td class="auto-style6">Run Manager</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td>Time:</td>
+                        <td>
+                            <input id="steady" checked="true" name="R1" type="radio" value="V1" onclick="call_steady()"/> Steady</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                            <input id="transient" name="R2" type="radio" value="V1" onclick="call_transient()" /> Transient</td>
+                    </tr>
+                </table>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>Initialization:</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <input id="initialize" class="auto-style4" type="button" value="Standard Initialization" onclick="call_initialize()"/></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td>Start From</td>
+                        <td class="auto-style3">
+                            <select id="startFrom" class="auto-style5" name="D1">
+                                <option selected="selected" value="startTime">Start Time</option>
+                                <option value="latestTime">Latest Time</option>
+                                <option value="firstTime">First Time</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td>Start Time</td>
+                        <td class="auto-style3">
+                            <input id="startTime" class="auto-style5" type="text" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td>End Time</td>
+                        <td class="auto-style3">
+                            <input id="endTime" class="auto-style5" type="text" value="--endTime--" /></td>
+                    </tr>
+                    <tr>
+                        <td>Time Step</td>
+                        <td class="auto-style3">
+                            <input id="deltaT" type="text" class="auto-style5" value="--deltaT--" /></td>
+                    </tr>
+                    <tr>
+                        <td>Write Control</td>
+                        <td class="auto-style3">
+                            <select id="writeControl" class="auto-style5" name="D2">
+                                <option selected="selected" value="timeStep">Time Step</option>
+                                <option value="runTime">Run Time</option>
+                                <option value="adjustableRunTime">Adjustable Run Time</option>
+                                <option value="cpuTime">CPU Time</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td>Write Interval</td>
+                        <td class="auto-style3">
+                            <input id="writeInterval" class="auto-style5" type="text" value="--writeInterval--" /></td>
+                    </tr>
+                    <tr>
+                        <td>Processors</td>
+                        <td class="auto-style3">
+                            <input id="nProcessors" class="auto-style5" type="text" value="1" /></td>
+                    </tr>
+                </table>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td class="auto-style1">
+                <input id="run" class="auto-style2" type="button" value="Run" onclick="call_run()" /></td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    </body>
+</html>

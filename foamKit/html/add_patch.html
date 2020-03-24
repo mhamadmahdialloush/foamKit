@@ -1,0 +1,135 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 336px;
+            height: 119px;
+        }
+        .auto-style11 {
+            text-align: center;
+        }
+        .auto-style13 {
+            text-align: left;
+        }
+        .auto-style20 {
+            width: 270px;
+            height: 140px;
+        }
+        .auto-style22 {
+            width: 60px;
+        }
+        .auto-style23 {
+            text-align: left;
+            height: 33px;
+            width: 167px;
+        }
+        .auto-style24 {
+            text-align: left;
+            height: 10px;
+            width: 167px;
+        }
+        .auto-style25 {
+            text-align: left;
+            height: 127px;
+            width: 167px;
+        }
+        .auto-style26 {
+            text-align: left;
+            height: 20px;
+        }
+    </style>
+    </head>
+<script>
+    function set_addPatch() {
+        window.location = 'skp:set_addPatch';
+    }
+    function set_deletePatch() {
+        window.location = 'skp:set_deletePatch@' + selectPatches();
+    }
+    function selectPatches() {
+        var active_patches = [];
+        var list_patches = document.getElementById("patchList");
+        var listLength = list_patches.options.length;
+        for (var i = 0; i < listLength; i++) {
+            if (list_patches.options[i].selected) {
+                active_patches.push(list_patches.options[i].value);
+            }
+        }
+        return active_patches
+    }  
+    function set_applyChanges() {
+        window.location = 'skp:set_applyChanges';
+    }
+	function call_selectPatches() {
+        var active_patches = selectPatches();
+
+        var params = [];
+        for (index = 0; index < active_patches.length; index++) {
+            params.push(active_patches[index])
+        }
+
+        var query = 'skp:call_selectPatches@' + params;
+        window.location.href = query;
+    }
+
+    function selectPatches() {
+        var active_patches = [];
+        var list_patches = document.getElementById("patchList");
+        var listLength = list_patches.options.length;
+        for (var i = 0; i < listLength; i++) {
+            if (list_patches.options[i].selected) {
+                active_patches.push(list_patches.options[i].value);
+            }
+        }
+        return active_patches
+    }
+    function set_changeName() {
+        var active_patches = selectPatches();
+        var params = [];
+        for (index = 0; index < active_patches.length; index++) {
+            params.push(active_patches[index])
+        }
+
+        var query = 'skp:set_changeName@' + params;
+        window.location.href = query;
+    }
+
+	
+</script>
+<body style="width: 338px; height: 258px">
+    <table class="auto-style1">
+        <tbody class="auto-style11">
+        <tr>
+            <td class="auto-style23">
+                 &nbsp;
+                 Add/delete patches:</td>
+            <td class="auto-style23">
+                 &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style25">
+                &nbsp;<select id="patchList" class="auto-style20" multiple="multiple" name="D1" onclick="call_selectPatches()">
+                    <option></option>
+                </select></td>
+            <td class="auto-style25">
+                <br />
+                <br />
+                <input id="addPatch" type="button" value="New" onclick="set_addPatch()" class="auto-style22"/><br />
+                <br />
+                <input id="deletePatch" type="button" value="Delete" onclick="set_deletePatch()" class="auto-style22"/><br />
+                <br />
+                <input id="editName" type="button" value="Rename" onclick="set_changeName()" class="auto-style22"/></td>
+        </tr>
+        <tr>
+            <td class="auto-style13" colspan="2">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="applyChanges" type="button" value="Apply" onclick="set_applyChanges()" class="auto-style22"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+        </tr>
+        </table>
+    </body>
+</html>

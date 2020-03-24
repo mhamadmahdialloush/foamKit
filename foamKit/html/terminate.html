@@ -1,0 +1,44 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 85px;
+        }
+        .auto-style2 {
+            width: 110%;
+        }
+    </style>
+    </head>
+<script>
+    function call_terminate() {
+        window.location = "skp:call_terminate";
+    }
+    function call_reset() {
+        window.location = "skp:call_reset";
+    }
+</script>
+<body style="width: 205px; height: 75px">
+    <table class="auto-style2">
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">Solving ...<br />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <input id="terminate" type="button" value="Terminate" onclick="call_terminate()"/></td>
+            <td>
+                <input id="reset" class="auto-style1" type="button" value="Reset" onclick="call_reset()"/></td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    </body>
+</html>
+

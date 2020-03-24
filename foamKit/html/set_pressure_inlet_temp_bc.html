@@ -1,0 +1,154 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style2 {
+            text-align: center;
+            width: 383px;
+        }
+        .auto-style5 {
+            width: 383px;
+        }
+        .auto-style10 {
+            text-align: center;
+            width: 11px;
+        }
+        .auto-style11 {
+            width: 11px;
+        }
+        .auto-style17 {
+            width: 100%;
+            height: 230px;
+        }
+        .auto-style25 {
+            text-align: right;
+            width: 383px;
+        }
+        .auto-style27 {
+            width: 100px;
+        }
+        .auto-style28 {
+            text-align: left;
+            width: 383px;
+        }
+        .auto-style29 {
+            text-align: left;
+        }
+        .auto-style32 {
+            text-align: right;
+        }
+        .auto-style35 {
+            width: 170px;
+        }
+        .auto-style36 {
+            font-size: medium;
+        }
+        .auto-style37 {
+            width: 25px;
+        }
+        .auto-style38 {
+            width: 190px;
+        }
+        </style>
+    </head>
+<script>
+    function switch_inlet_to_velocity() {
+        window.location = 'skp:switch_inlet_to_velocity';
+    }
+    function call_applyChanges() {
+        window.location = 'skp:call_applyChanges';
+    }
+</script>
+<body style="width: 359px; height: 315px">
+    <table class="auto-style17">
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5"><span class="auto-style36">Boundary Type: </span> <em><span class="auto-style36">inlet</span></em></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11" rowspan="2">&nbsp;</td>
+            <td class="auto-style5">
+                Momentum<br />
+            </td>
+            <td rowspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style28" style="border: thin solid #C0C0C0">
+                <table style="width:100%;">
+                    <tr>
+                        <td colspan="2">
+                            <input id="isVelocityInlet" name="R1" type="radio" value="V1" onclick="switch_inlet_to_velocity()" />&nbsp; Velocity Inlet</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input id="isPressureInlet" name="R2" type="radio" value="V1" checked="true"/>&nbsp; Pressure Inlet</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style37">
+                            &nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style37">
+                            &nbsp;</td>
+                        <td>
+                            Pressure [pa]&nbsp;
+                            <input id="pValue" class="auto-style38" type="text" value="0.0" /></td>
+                    </tr>
+                    </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <table style="width:100%;">
+                    <tr>
+                        <td>Temperature [k]:&nbsp;&nbsp; </td>
+                        <td class="auto-style32"> <input id="TValue" class="auto-style35" type="text" value="300" /></td>
+                    </tr>
+                </table>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                &nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style10">&nbsp;</td>
+            <td class="auto-style2">
+                <input id="applyChanges" type="button" value="Apply" onclick="call_applyChanges()"/></td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    </body>
+</html>

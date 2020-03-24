@@ -1,0 +1,51 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 283px;
+            height: 119px;
+        }
+        .auto-style11 {
+            text-align: center;
+        }
+        .auto-style12 {
+            text-align: left;
+            height: 33px;
+        }
+        .auto-style13 {
+            text-align: left;
+        }
+        .auto-style14 {
+            width: 268px;
+        }
+    </style>
+    </head>
+<script>
+    function set_patchName() {
+        window.location = 'skp:set_patchName';
+    }
+</script>
+<body style="width: 290px; height: 127px">
+    <table class="auto-style1">
+        <tbody class="auto-style11">
+        <tr>
+            <td class="auto-style12">
+                Insert name of new patch:</td>
+        </tr>
+        <tr>
+            <td class="auto-style13">
+                <input id="patchName" class="auto-style14" type="text" /></td>
+        </tr>
+        <tr>
+            <td class="auto-style13">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="set_patchName" type="button" value="Apply" onclick="set_patchName()"/></td>
+        </tr>
+        </table>
+    </body>
+</html>

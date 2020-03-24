@@ -1,0 +1,204 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            text-align: center;
+            height: 33px;
+        }
+        .auto-style2 {
+            width: 50px;
+        }
+        .auto-style6 {
+            height: 23px;
+        }
+        .auto-style7 {
+            direction: ltr;
+            height: 23px;
+        }
+        .auto-style8 {
+            width: 100%;
+            height: 448px;
+        }
+        .auto-style9 {
+            width: 241px;
+        }
+        .auto-style10 {
+            width: 70px;
+        }
+        .auto-style12 {
+            direction: ltr;
+            height: 23px;
+            text-align: right;
+        }
+        .auto-style13 {
+            width: 93px;
+        }
+        .auto-style14 {
+            height: 20px;
+        }
+        .auto-style15 {
+            height: 16px;
+        }
+        .auto-style16 {
+            direction: ltr;
+            height: 16px;
+        }
+        .auto-style17 {
+            height: 33px;
+        }
+    </style>
+    </head>
+<script>
+    function call_create() {
+        window.location = 'skp:call_create';
+    }
+    function call_select_method() {
+        window.location = 'skp:call_select_method';
+    }
+    function call_3pcut() {
+        window.location = 'skp:call_3pcut';
+    }
+</script>
+<body style="width: 290px; height: 447px">
+    <table class="auto-style8">
+        <tr>
+            <td>&nbsp;</td>
+            <td>Create New Plane</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style7">
+                Insert Method:</td>
+            <td class="auto-style6">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style7">
+                <select id="insert_method" class="auto-style9" name="D1" onchange="call_select_method()">
+                    <option value="point_normal">Point and Normal</option>
+                    <option selected="selected" value="three_points">Three Points</option>
+                </select></td>
+            <td class="auto-style6">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style7">
+                <br />
+                Point 1:</td>
+            <td class="auto-style6">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style7">
+                <table style="width:100%;">
+                    <tr>
+                        <td>x:</td>
+                        <td>y:</td>
+                        <td>z:</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="x" class="auto-style10" type="text" value="0" disabled="disabled" /></td>
+                        <td>
+                            <input id="y" class="auto-style10" type="text" value="0" disabled="disabled" /></td>
+                        <td>
+                            <input id="z" class="auto-style10" type="text" value="0" disabled="disabled" /></td>
+                    </tr>
+                </table>
+            </td>
+            <td class="auto-style6">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style7">
+                Point 2:</td>
+            <td class="auto-style6">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style7">
+                <table style="width:100%;">
+                    <tr>
+                        <td>x:</td>
+                        <td>y:</td>
+                        <td>z:</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="x0" class="auto-style10" type="text" value="0" disabled="disabled" /></td>
+                        <td>
+                            <input id="y0" class="auto-style10" type="text" value="0" disabled="disabled" /></td>
+                        <td>
+                            <input id="z0" class="auto-style10" type="text" value="0" disabled="disabled" /></td>
+                    </tr>
+                </table>
+            </td>
+            <td class="auto-style6">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style7">
+                Point3:</td>
+            <td class="auto-style6">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style7">
+                <table style="width:100%;">
+                    <tr>
+                        <td>x:</td>
+                        <td>y:</td>
+                        <td>z:</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="x1" class="auto-style10" type="text" value="0" disabled="disabled" /></td>
+                        <td>
+                            <input id="y1" class="auto-style10" type="text" value="0" disabled="disabled" /></td>
+                        <td>
+                            <input id="z1" class="auto-style10" type="text" value="0" disabled="disabled" /></td>
+                    </tr>
+                </table>
+            </td>
+            <td class="auto-style6">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style15"></td>
+            <td class="auto-style16"></td>
+            <td class="auto-style15"></td>
+        </tr>
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style12">
+                <input id="3pcut" class="auto-style13" type="button" value="Section Cut" onclick="call_3pcut()"/></td>
+            <td class="auto-style6">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style14"></td>
+            <td class="auto-style14">
+                <hr />
+            </td>
+            <td class="auto-style14"></td>
+        </tr>
+        <tr>
+            <td class="auto-style17"></td>
+            <td class="auto-style1">
+                <input id="plot" class="auto-style2" type="button" value="Create" onclick="call_create()" /></td>
+            <td class="auto-style17"></td>
+        </tr>
+    </table>
+    </body>
+</html>

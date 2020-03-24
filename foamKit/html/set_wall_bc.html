@@ -1,0 +1,83 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style2 {
+            text-align: center;
+            width: 383px;
+        }
+        .auto-style5 {
+            width: 383px;
+        }
+        .auto-style10 {
+            text-align: center;
+            width: 11px;
+        }
+        .auto-style11 {
+            width: 11px;
+        }
+        .auto-style17 {
+            width: 100%;
+            height: 150px;
+        }
+        .auto-style18 {
+            font-size: medium;
+        }
+        </style>
+    </head>
+<script>
+    function call_applyChanges() {
+        window.location = 'skp:call_applyChanges';
+    }
+    function call_noSlip() {
+        document.getElementById("slip").checked = false;
+        document.getElementById("noSlip").value = 1;
+        document.getElementById("slip").value = 0;
+    }
+    function call_slip() {
+        document.getElementById("noSlip").checked = false;
+        document.getElementById("slip").value = 1;
+        document.getElementById("noSlip").value = 0;
+    }
+</script>
+<body style="width: 334px; height: 150px">
+    <table class="auto-style17">
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5"><span class="auto-style18">Boundary Type: </span> <em><span class="auto-style18">wall</span></em></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <input id="noSlip" checked="true" name="R1" type="radio" value="1" onclick="call_noSlip()"/> No Slip<br />
+                <input id="slip" name="R2" type="radio" value="0" onclick="call_slip()"/> Slip</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style10">&nbsp;</td>
+            <td class="auto-style2">
+                <input id="applyChanges" type="button" value="Apply" onclick="call_applyChanges()"/></td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    </body>
+</html>

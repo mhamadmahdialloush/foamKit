@@ -1,0 +1,126 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            font-size: medium;
+        }
+        .auto-style2 {
+            text-align: center;
+        }
+        .auto-style4 {
+            width: 12px;
+        }
+        .auto-style5 {
+            text-align: left;
+        }
+        .auto-style6 {
+            width: 99%;
+        }
+        .auto-style7 {
+            width: 180px;
+        }
+        .auto-style8 {
+            width: 120px;
+        }
+        .auto-style9 {
+            width: 9px;
+        }
+    </style>
+    </head>
+<script>
+
+    function call_applyChanges() {
+        window.location = 'skp:call_applyChanges';
+    }
+
+</script>
+<body style="width: 284px; height: 328px">
+    <table class="auto-style6">
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td class="auto-style1">Standard Initialization</td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td>
+                <hr />
+            </td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td>Momentum:</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style5">x-velocity [m/s]</td>
+                        <td class="auto-style5">
+                            <input id="Ux" class="auto-style8" type="text" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style5">y-velocity [m/s]</td>
+                        <td class="auto-style5">
+                            <input id="Uy" class="auto-style8" type="text" value="0" /></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style5">z-velocity [m/s]</td>
+                        <td class="auto-style5">
+                            <input id="Uz" class="auto-style8" type="text" value="0" /></td>
+                    </tr>
+                </table>
+            </td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td>
+                <hr />
+            </td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td>Pressure [pa]:</td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td>
+                <input id="p" class="auto-style7" type="text" value="0" /></td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td>
+                <hr />
+            </td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td class="auto-style2">
+                <input id="applyChanges" type="button" value="Apply" onclick="call_applyChanges()"/></td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+    </table>
+    </body>
+</html>

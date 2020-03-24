@@ -1,0 +1,121 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 425px;
+            height: 153px;
+        }
+        .auto-style9 {
+            width: 200px;
+        }
+        .auto-style11 {
+            text-align: center;
+        }
+        .auto-style28 {
+            width: 280px;
+            text-align: right;            
+        }
+        .auto-style29 {
+            width: 20px;
+        }
+        .auto-style32 {
+            text-align: left;
+        }
+        .auto-style33 {
+            width: 222px;
+        }
+        .auto-style34 {
+            text-align: left;
+            font-size: medium;
+            height: 7px;
+        }
+        .auto-style35 {
+            width: 400px;
+            height: 96px;
+        }
+        .auto-style36 {
+            height: -12px;
+        }
+        .auto-style37 {
+            height: 9px;
+        }        
+    </style>
+    </head>
+<script>
+	var applications = [--applications--];
+	var descriptions = [--descriptions--];	
+    function call_create_case() {
+		window.location = 'skp:call_create_case';
+    }
+    window.onload = function set_application_list() {
+		var applicationList = document.getElementById('applicationList');
+		
+		for (var i in applications) {
+			var option = document.createElement('option');
+			option.text = applications[i];
+			option.value = applications[i];
+			applicationList.add(option);		
+		}
+		call_applicationList();
+    }
+    function call_applicationList() {
+        var selectedIndex = document.getElementById("applicationList").selectedIndex;
+        document.getElementById("descriptionBox").value = descriptions[selectedIndex];
+    }
+</script>
+<body style="width: 427px; height: 319px">
+    <table class="auto-style1">            <tr>
+                <td class="auto-style11">&nbsp;</td>
+                <td class="auto-style34" colspan="3">Create OpenFoam Case</td>
+                <td class="auto-style11">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style36">
+                    &nbsp;</td>
+                <td colspan="3">
+                    <hr />
+                </td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+        <tr>
+            <td class="auto-style29">&nbsp;</td>
+            <td class="auto-style33">&nbsp;</td>
+            <td class="auto-style28">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style29">&nbsp;</td>
+            <td class="auto-style33">Choose your application:</td>
+            <td class="auto-style28">
+                <select id="applicationList" class="auto-style9" name="D1" onchange="call_applicationList()">	
+                </select></td>
+        </tr>
+        <tr>
+            <td class="auto-style37" colspan="3"></td>
+        </tr>        
+        <tr>
+            <td class="auto-style29">&nbsp;</td>
+            <td class="auto-style33">Description:</td>
+            <td class="auto-style28">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style29">&nbsp;</td>
+            <td class="auto-style32" colspan="2">
+                <textarea id="descriptionBox" name="Text1" class="auto-style35" readonly="readonly"></textarea></td>
+        </tr>
+        <tr>
+            <td class="auto-style11" colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11" colspan="3">
+                <input id="createCase" type="button" value="Create" onclick="call_create_case()" /></td>
+        </tr>
+    </table>
+    </body>
+</html>

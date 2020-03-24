@@ -1,0 +1,87 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            font-size: medium;
+        }
+        .auto-style2 {
+            text-align: center;
+        }
+        .auto-style4 {
+            width: 12px;
+        }
+        .auto-style5 {
+            text-align: left;
+        }
+        .auto-style6 {
+            width: 99%;
+        }
+        .auto-style7 {
+            width: 180px;
+        }
+        .auto-style8 {
+            width: 120px;
+        }
+        .auto-style9 {
+            width: 9px;
+        }
+    </style>
+    </head>
+<script>
+
+    function call_applyChanges() {
+        window.location = 'skp:call_applyChanges';
+    }
+
+</script>
+<body style="width: 284px; height: 174px">
+    <table class="auto-style6">
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td class="auto-style1">Standard Initialization</td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td>
+                <hr />
+            </td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td>Temperature [k]:</td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td>
+                <input id="T" class="auto-style7" type="text" value="300" /></td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td>
+                <hr />
+            </td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td class="auto-style2">
+                <input id="applyChanges" type="button" value="Apply" onclick="call_applyChanges()"/></td>
+            <td class="auto-style4">&nbsp;</td>
+        </tr>
+    </table>
+    </body>
+</html>

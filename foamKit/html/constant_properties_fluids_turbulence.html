@@ -1,0 +1,211 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 77%;
+            height: 280px;
+        }
+        .auto-style11 {
+            text-align: left;
+            font-size: medium;
+            height: 7px;
+            width: 300px;
+        }
+        .auto-style22 {
+            text-align: left;
+        }
+        .auto-style23 {
+            width: 303px;
+            height: 281px;
+        }
+        .auto-style30 {
+            text-align: left;
+            font-size: medium;
+            height: 7px;
+            width: 12px;
+        }
+        .auto-style35 {
+            width: 12px;
+        }
+        .auto-style63 {
+            text-align: center;
+            width: 300px;
+        }
+        .auto-style66 {
+            text-align: left;
+            font-size: medium;
+            height: 7px;
+            width: 11px;
+        }
+        .auto-style69 {
+            width: 11px;
+        }
+        .auto-style76 {
+            width: 151px;
+        }
+        .auto-style80 {
+            width: 58px;
+            height: 23px;
+        }
+        .auto-style84 {
+            width: 312px;
+        }
+        .auto-style85 {
+            text-align: right;
+        }
+        .auto-style86 {
+            width: 200px;
+        }
+        .auto-style89 {
+            width: 300px;
+        }
+        </style>
+    </head>
+<script>
+
+    window.onload = function disableAttributes() {
+        call_activateTurbulence();
+    }
+
+    function call_activateTurbulence() {
+        var state = document.getElementById("activateTurbulence").checked;
+        document.getElementById("setRASModel").disabled = !state;
+    }
+
+    function call_applyChanges() {
+        var params = [];
+
+        params.push(document.getElementById("activateTurbulence").checked);
+        params.push(document.getElementById("setRASModel").value);
+
+        var query = 'skp:call_applyChanges@' + params;
+        window.location.href = query;
+    }
+
+    function call_editFluid() {
+        var query = 'skp:call_editFluid';
+        window.location.href = query;
+    }
+
+</script>
+<body style="width: 304px; height: 283px">
+    <form id="form1" runat="server" class="auto-style23">
+        <table class="auto-style1">
+            <tbody class="auto-style22">
+            <tr>
+                <td class="auto-style30"></td>
+                <td class="auto-style11">Constant Properties</td>
+                <td class="auto-style66"></td>
+            </tr>
+            <tr>
+                <td class="auto-style35">
+                    </td>
+                <td class="auto-style89">
+                    <hr />
+                </td>
+                <td class="auto-style69">
+                    </td>
+            </tr>
+            <tr>
+                <td class="auto-style35">
+                    &nbsp;</td>
+                <td class="auto-style89">
+                    Fluid Materials</td>
+                <td class="auto-style69">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style35">
+                    &nbsp;</td>
+                <td class="auto-style89">
+                    <table style="width:100%;">
+                        <tr>
+                            <td class="auto-style84">
+                    <select id="fluidList" class="auto-style86" name="D1" >
+					--fluidList--
+                    </select></td>
+                            <td class="auto-style85">
+                    <input id="editProperty" class="auto-style80" type="button" value="Edit" onclick="call_editFluid()"/></td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="auto-style69">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style35">
+                    &nbsp;</td>
+                <td class="auto-style89">
+                    &nbsp;</td>
+                <td class="auto-style69">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style35">
+                    &nbsp;</td>
+                <td class="auto-style89">
+                    <hr />
+                </td>
+                <td class="auto-style69">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style35">
+                    &nbsp;</td>
+                <td class="auto-style89">
+                    Turbulence Properties</td>
+                <td class="auto-style69">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style35">
+                    &nbsp;</td>
+                <td class="auto-style89">
+                    <table style="width:100%;" id="turbulencePanel">
+                        <tr>
+                            <td>
+                    <input id="activateTurbulence" --turbulenceDisabled-- type="checkbox" onclick="call_activateTurbulence()" /> Turbulence</td>
+                            <td class="auto-style85">
+                    <select id="setRASModel" class="auto-style76" name="D2">
+					--modelList--
+                    </select></td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="auto-style69">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style35">
+                    &nbsp;</td>
+                <td class="auto-style63">
+                    &nbsp;</td>
+                <td class="auto-style69">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style35">
+                    &nbsp;</td>
+                <td class="auto-style63">
+                    <hr />
+                </td>
+                <td class="auto-style69">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style35">
+                    &nbsp;</td>
+                <td class="auto-style63">
+                    <input id="applyChanges" type="button" value="Apply" onclick="call_applyChanges()"/></td>
+                <td class="auto-style69">
+                    &nbsp;</td>
+            </tr>
+            </table>
+    </form>
+    </body>
+</html>

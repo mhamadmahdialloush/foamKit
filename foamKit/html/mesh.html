@@ -1,0 +1,503 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            text-align: center;
+        }
+        .auto-style2 {
+            width: 230px;
+            height: 120px;
+        }
+        .auto-style4 {
+            width: 99%;
+            height: 595px;
+        }
+        .auto-style5 {
+            width: 97px;
+        }
+        .auto-style6 {
+            text-align: left;
+            width: 16px;
+        }
+        .auto-style10 {
+            width: 16px;
+            height: 16px;
+        }
+        .auto-style11 {
+            text-align: center;
+            width: 120px;
+        }
+        .auto-style14 {
+            text-align: right;
+        }
+        .auto-style15 {
+            width: 181px;
+        }
+        .auto-style16 {
+            width: 100px;
+        }
+        .auto-style18 {
+            width: 100%;
+        }
+        .auto-style19 {
+            width: 16px;
+        }
+        .auto-style23 {
+            height: 8px;
+            width: 20px;
+            font-size: xx-small;
+        }
+        .auto-style25 {
+            height: 8px;
+            width: 20px;
+        }
+        .auto-style27 {
+            width: 85px;
+        }
+    </style>
+    </head>
+<script>
+
+    var patches = [
+--patchObjectList--
+    ]
+
+    var general_patch_settings = {
+        thickness: --thickness--,
+        expansionRatio: --expansionRatio--
+    };
+
+    var general_mesh_settings = {
+        locationInMesh: --locationInMesh--
+    };
+
+    var length_scale = --length_scale--;
+
+    window.onload = function set_onload() {
+        call_selectPatches();
+    }
+
+    function call_addLayers() {
+        var state = !document.getElementById("addLayers").checked;
+
+        document.getElementById("thickness").disabled = state;
+        document.getElementById("expansionRatio").disabled = state;
+        document.getElementById("numberOfLayers").disabled = state;
+    }
+
+    function selectPatches() {
+        var active_patches = [];
+        var list_patches = document.getElementById("selectPatches");
+        var listLength = list_patches.options.length;
+        for (var i = 0; i < listLength; i++) {
+            if (list_patches.options[i].selected) {
+                active_patches.push(list_patches.options[i].value);
+            }
+        }
+        return active_patches;
+    }
+
+    function call_createMesh() {
+        var params = [];
+        for (var iPatch in patches) {
+            params.push(String(patches[iPatch].name));
+            params.push(String(patches[iPatch].min_refLevel));
+            params.push(String(patches[iPatch].max_refLevel));
+            params.push(String(patches[iPatch].addLayers));
+            params.push(String(patches[iPatch].numberOfLayers));
+        }
+
+        params.push(String(general_patch_settings.thickness));
+        params.push(String(general_patch_settings.expansionRatio));
+        params.push(String(general_mesh_settings.locationInMesh));
+
+        var query = 'skp:call_createMesh@' + params;
+        window.location.href = query;
+    }
+    function get_patch_index(patch_names) {
+        var iPatches = [];
+        for (var iPatchName in patch_names) {
+            patch_name = patch_names[iPatchName];
+            for (var iPatch in patches) {
+                if (patches[iPatch].name == patch_name) {
+                    iPatches.push(iPatch);
+                }
+            }
+        }
+        return iPatches;
+    }
+    function call_applySurfaceSettings() {
+        active_patches = selectPatches();
+        if (active_patches.length > 0) {
+            var iPatches = get_patch_index(active_patches);
+            for (var i in iPatches) {
+                patches[iPatches[i]].min_refLevel = document.getElementById("min_refLevel").value;
+                patches[iPatches[i]].max_refLevel = document.getElementById("max_refLevel").value;
+                patches[iPatches[i]].addLayers = document.getElementById("addLayers").checked;
+                patches[iPatches[i]].numberOfLayers = document.getElementById("numberOfLayers").value;
+            }
+        }
+        general_patch_settings.thickness = document.getElementById("thickness").value;
+        general_patch_settings.expansionRatio = document.getElementById("expansionRatio").value;
+    }
+    function call_editPatches() {
+        var query = 'skp:call_editPatches';
+        window.location.href = query;
+    }
+    function call_selectPatches() {
+        var active_patches = selectPatches();
+        var active_patches_indecis = get_patch_index(active_patches);
+
+        if (active_patches.length > 1) {
+            for (var iPatch = 1; iPatch < active_patches_indecis.length; iPatch++) {
+                if (patches[active_patches_indecis[iPatch]].min_refLevel != patches[active_patches_indecis[iPatch - 1]].min_refLevel) {
+                    document.getElementById("min_refLevel").value = "";
+                }
+                if (patches[active_patches_indecis[iPatch]].max_refLevel != patches[active_patches_indecis[iPatch - 1]].max_refLevel) {
+                    document.getElementById("max_refLevel").value = "";
+                }
+                if (patches[active_patches_indecis[iPatch]].addLayers != patches[active_patches_indecis[iPatch - 1]].addLayers) {
+                    document.getElementById("addLayers").checked = false;
+
+                    document.getElementById("thickness").disabled = true;
+                    document.getElementById("expansionRatio").disabled = true;
+                    document.getElementById("numberOfLayers").disabled = true;
+                }
+                if (patches[active_patches_indecis[iPatch]].numberOfLayers != patches[active_patches_indecis[iPatch - 1]].numberOfLayers) {
+                    document.getElementById("numberOfLayers").value = "";
+                }
+            }
+        }
+        else {
+            for (var iPatch in active_patches_indecis) {
+                document.getElementById("min_refLevel").value = patches[active_patches_indecis[iPatch]].min_refLevel;
+                document.getElementById("max_refLevel").value = patches[active_patches_indecis[iPatch]].max_refLevel;
+                document.getElementById("addLayers").checked = patches[active_patches_indecis[iPatch]].addLayers;
+
+                document.getElementById("thickness").disabled = !document.getElementById("addLayers").checked;
+                document.getElementById("expansionRatio").disabled = !document.getElementById("addLayers").checked;
+                document.getElementById("numberOfLayers").disabled = !document.getElementById("addLayers").checked;
+
+                document.getElementById("numberOfLayers").value = patches[active_patches_indecis[iPatch]].numberOfLayers;
+            }
+        }
+        var params = [];
+        for (index = 0; index < active_patches.length; index++) {
+            params.push(active_patches[index])
+        }
+
+        var query = 'skp:call_selectPatches@' + params;
+        window.location.href = query;
+
+        document.getElementById("selectUnassigned").checked = false
+    }
+
+    function call_changeLoc() {
+        general_mesh_settings.locationInMesh = [document.getElementById("xLoc").value, document.getElementById("yLoc").value, document.getElementById("zLoc").value];
+
+        var state = document.getElementById("showPoint").checked;
+		var params = [state, String(document.getElementById("xLoc").value), String(document.getElementById("yLoc").value), String(document.getElementById("zLoc").value)];
+        var query = 'skp:call_showPoint@' + params;
+        window.location.href = query;
+    }
+
+    function call_displayPatch() {
+        var state = document.getElementById("displayPatch").checked;
+        if (state == false) {
+            document.getElementById("displayPatch").value = 0;
+        }
+        else {
+            document.getElementById("displayPatch").value = 1;
+        }
+
+        var active_patches = selectPatches();
+
+        var params = [];
+        for (index = 0; index < active_patches.length; index++) {
+            params.push(active_patches[index])
+        }
+
+        var query = 'skp:call_displayPatch@' + params;
+        window.location.href = query;
+    }
+
+    function call_selectUnassigned() {
+
+        var list_patches = document.getElementById("selectPatches");
+        var listLength = list_patches.options.length;
+
+        for (var i = 0; i < listLength; i++) {
+            if (list_patches.options[i].selected) {
+                list_patches.options[i].selected = false;
+            }
+        }
+
+		for (var i = 0; i < listLength; i++) {
+			var str = list_patches.options[i].value
+			if (str.length > 15) {
+				if (str.substring(0, 15) == "unassigned_wall") {
+					list_patches.options[i].selected = true;
+				}
+			}
+		}
+
+        call_displayPatch();
+		call_selectPatches();
+    }
+
+    function call_selectAll() {
+        var list_patches = document.getElementById("selectPatches");
+        var listLength = list_patches.options.length;
+
+        for (var i = 0; i < listLength; i++) {
+            list_patches.options[i].selected = true;
+        }
+        call_displayPatch();
+		call_selectPatches();
+    }
+    function call_unselectAll() {
+        var list_patches = document.getElementById("selectPatches");
+        var listLength = list_patches.options.length;
+
+        for (var i = 0; i < listLength; i++) {
+            list_patches.options[i].selected = false;
+        }
+        call_displayPatch();
+		call_selectPatches();
+    }
+
+    function call_displayTransparent() {
+        var state = document.getElementById("displayTransparent").checked;
+        if (state == false) {
+            document.getElementById("displayTransparent").value = 0;
+        }
+        else {
+            document.getElementById("displayTransparent").value = 1;
+        }
+
+        var query = 'skp:call_displayTransparent';
+        window.location.href = query;
+    }
+
+    function increase_x() {
+		var x_loc = document.getElementById("xLoc").value;
+        x_loc = parseFloat(x_loc) + length_scale / 30;
+		document.getElementById("xLoc").value = x_loc;
+        call_changeLoc();
+    }
+    function decrease_x() {
+		var x_loc = document.getElementById("xLoc").value;
+        x_loc = parseFloat(x_loc) - length_scale / 30;
+		document.getElementById("xLoc").value = x_loc;
+        call_changeLoc();
+    }
+    function increase_y() {
+		var y_loc = document.getElementById("yLoc").value;
+        y_loc = parseFloat(y_loc) + length_scale / 30;
+		document.getElementById("yLoc").value = y_loc;
+        call_changeLoc();
+    }
+    function decrease_y() {
+		var y_loc = document.getElementById("yLoc").value;
+        y_loc = parseFloat(y_loc) - length_scale / 30;
+		document.getElementById("yLoc").value = y_loc;
+        call_changeLoc();
+    }
+    function increase_z() {
+		var z_loc = document.getElementById("zLoc").value;
+        z_loc = parseFloat(z_loc) + length_scale / 30;
+		document.getElementById("zLoc").value = z_loc;
+        call_changeLoc();
+    }
+    function decrease_z() {
+		var z_loc = document.getElementById("zLoc").value;
+        z_loc = parseFloat(z_loc) - length_scale / 30;
+		document.getElementById("zLoc").value = z_loc;
+        call_changeLoc();
+    }
+</script>
+<body style="width: 550px; height: 610px">
+    <table class="auto-style4">
+        <tr>
+            <td>&nbsp;</td>
+            <td>Mesh Settings</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td class="auto-style19">Patches</td>
+                        <td class="auto-style14">
+                                        <input id="unselectAll" class="auto-style10" type="button" value="&#9783;" onclick="call_unselectAll()" style="font-size: xx-small"/>&nbsp;<input id="selectAll" class="auto-style10" type="button" value="&#9776;" onclick="call_selectAll()" style="font-size: xx-small"/>
+                                        <input id="selectUnassigned" class="auto-style10" type="button" value="&#9782;" onclick="call_selectUnassigned()" style="font-size: xx-small"/>&nbsp;&nbsp; </td>
+                        <td class="auto-style19">&nbsp;</td>
+                        <td colspan="2">Location in Mesh</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" rowspan="2">
+                            <select id="selectPatches" class="auto-style2" multiple="multiple" name="D1" onclick="call_selectPatches()">
+                                --patchBoxList--
+                            </select></td>
+                        <td class="auto-style19">
+                            &nbsp;</td>
+                        <td colspan="2">
+                            <table style="border: thin solid #C0C0C0;" class="auto-style18">
+                                <tr>
+                                    <td rowspan="2">x-position --u1-- </td>
+                                    <td class="auto-style14" rowspan="2">
+                                        <input id="xLoc" class="auto-style27" type="text" value="--xLoc--" onchange="call_changeLoc()"/></td>
+                                    <td class="auto-style14">
+                                        <input id="x_up" class="auto-style23" type="button" onclick="increase_x()"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style14">
+                                        <input id="x_dn" class="auto-style23" type="button" onclick="decrease_x()"/></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">y-position --u2--</td>
+                                    <td class="auto-style14" rowspan="2">
+                                        <input id="yLoc" class="auto-style27" type="text" value="--yLoc--" onchange="call_changeLoc()"/></td>
+                                    <td class="auto-style14">
+                                        <input id="y_up" class="auto-style25" type="button" onclick="increase_y()" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style14">
+                                        <input id="y_dn" class="auto-style25" type="button" onclick="decrease_y()" /></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">z-position --u3--</td>
+                                    <td class="auto-style14" rowspan="2">
+                                        <input id="zLoc" class="auto-style27" type="text" value="--zLoc--" onchange="call_changeLoc()"/></td>
+                                    <td class="auto-style14">
+                                        <input id="z_up" class="auto-style25" type="button" onclick="increase_z()" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style14">
+                                        <input id="z_dn" class="auto-style25" type="button" onclick="decrease_z()" /></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                            <input id="showPoint" type="checkbox" onclick="call_changeLoc()"/> Display Point</td>
+                                    <td class="auto-style14" colspan="2">
+                                        &nbsp;</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style19">
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style6">
+                            <input id="editPatches" type="button" value="Edit Patches" onclick="call_editPatches()" class="auto-style5"/></td>
+                        <td class="auto-style11">
+                            <input id="displayPatch" type="checkbox" onclick="call_displayPatch()"/> Display</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <hr />
+                        </td>
+                        <td class="auto-style19">&nbsp;</td>
+                        <td>Processors</td>
+                        <td class="auto-style14">
+                            <input id="nProcessors" type="text" value="1" class="auto-style16" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table style="width:100%;">
+                                <tr>
+                                    <td class="auto-style15">Min Refinement</td>
+                                    <td class="auto-style14">
+                                        <input id="min_refLevel" type="text" value="2" class="auto-style16" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style15">Max Refinement</td>
+                                    <td class="auto-style14">
+                                        <input id="max_refLevel" type="text" value="3" class="auto-style16" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style15">Inflation Layers</td>
+                                    <td>
+                                        <input id="addLayers" type="checkbox" onclick="call_addLayers()"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style15">Number of Layers</td>
+                                    <td class="auto-style14">
+                                        <input id="numberOfLayers" type="text" disabled="disabled" value="5" class="auto-style16"/></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td rowspan="2" class="auto-style19">
+                            &nbsp;</td>
+                        <td colspan="2" rowspan="2">
+                            <hr />
+                            <br />
+                            Note: You can select multiple patches from the box list; all the selected patches will have the same settings that the user sets.<br />
+                            The <em>Expansion Ratio</em> and the <em>Total Thickness</em> are general for all patches.<br /> If parallel meshing is required, the user <br />
+							has to set the right number of processors<br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="auto-style1">
+                            <input id="applySurfaceSettings" type="button" value="Apply" onclick="call_applySurfaceSettings()"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="auto-style1">
+                            <hr />
+                        </td>
+                        <td class="auto-style19">&nbsp;</td>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table class="auto-style18">
+                                <tr>
+                                    <td>Expansion Ratio</td>
+                                    <td class="auto-style14">
+                                        <input id="expansionRatio" type="text" disabled="disabled" value="1.2" class="auto-style16"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Thickness --u4--</td>
+                                    <td class="auto-style14">
+                                        <input id="thickness" type="text" disabled="disabled" value="--thicknessVal--" class="auto-style16"/></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="auto-style19">&nbsp;</td>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                </table>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td class="auto-style1">
+                <input id="createMesh" type="button" value="Create Mesh" onclick="call_createMesh()"/></td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    </body>
+</html>

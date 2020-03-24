@@ -1,0 +1,310 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style2 {
+            text-align: center;
+            width: 383px;
+        }
+        .auto-style5 {
+            text-align: left;
+            width: 500px;
+            height: 30px;
+        }
+        .auto-style10 {
+            text-align: center;
+            width: 11px;
+        }
+        .auto-style11 {
+            width: 11px;
+        }
+        .auto-style17 {
+            width: 89%;
+            height: 586px;
+        }
+        .auto-style25 {
+            text-align: right;
+            width: 400px;
+            height: 100px;
+        }
+        .auto-style29 {
+            text-align: left;
+        }
+        .auto-style35 {
+            font-size: medium;
+        }
+        .auto-style36 {
+            width: 220px;
+        }
+        .auto-style37 {
+            width: 11px;
+            height: 23px;
+        }
+        .auto-style38 {
+            width: 383px;
+            height: 23px;
+        }
+        .auto-style39 {
+            width: 242px;
+            height: 120px;
+        }
+        </style>
+    </head>
+<script>
+    window.onload = function setOnLoad() {
+        displayAttributes("");
+    }
+    function call_applyChanges() {
+        window.location = "skp:call_applyChanges";
+    }
+    function call_noSlip() {
+        document.getElementById("slip").checked = false;
+        document.getElementById("noSlip").value = 1;
+        document.getElementById("slip").value = 0;
+    }
+    function call_slip() {
+        document.getElementById("noSlip").checked = false;
+        document.getElementById("slip").value = 1;
+        document.getElementById("noSlip").value = 0;
+    }
+
+    function call_isTemperature() {
+        document.getElementById("isHeatFlux").checked = false;
+        document.getElementById("isOutdoorTemperature").checked = false;
+        document.getElementById("isAdiabatic").checked = false;
+        document.getElementById("isRadiation").checked = false;
+
+        document.getElementById("isTemperature").value = 1;
+        document.getElementById("isHeatFlux").value = 0;
+        document.getElementById("isOutdoorTemperature").value = 0;
+        document.getElementById("isAdiabatic").value = 0;
+        document.getElementById("isRadiation").value = 0;
+
+        displayAttributes("isTemperature");
+		
+		window.location = 'skp:call_isTemperature';
+    }
+    function call_isHeatFlux() {
+        document.getElementById("isTemperature").checked = false;
+        document.getElementById("isOutdoorTemperature").checked = false;
+        document.getElementById("isAdiabatic").checked = false;
+        document.getElementById("isRadiation").checked = false;
+
+        document.getElementById("isTemperature").value = 0;
+        document.getElementById("isHeatFlux").value = 1;
+        document.getElementById("isOutdoorTemperature").value = 0;
+        document.getElementById("isAdiabatic").value = 0;
+        document.getElementById("isRadiation").value = 0;
+
+        displayAttributes("isHeatFlux");
+		
+		window.location = 'skp:call_isHeatFlux';		
+    }
+    function call_isOutdoorTemperature() {
+        document.getElementById("isHeatFlux").checked = false;
+        document.getElementById("isTemperature").checked = false;
+        document.getElementById("isAdiabatic").checked = false;
+        document.getElementById("isRadiation").checked = false;
+
+        document.getElementById("isTemperature").value = 0;
+        document.getElementById("isHeatFlux").value = 0;
+        document.getElementById("isOutdoorTemperature").value = 1;
+        document.getElementById("isAdiabatic").value = 0;
+        document.getElementById("isRadiation").value = 0;
+
+        displayAttributes("isOutdoorTemperature");
+		
+		window.location = 'skp:call_isOutdoorTemperature';		
+    }
+    function call_isAdiabatic() {
+        document.getElementById("isTemperature").checked = false;
+        document.getElementById("isOutdoorTemperature").checked = false;
+        document.getElementById("isHeatFlux").checked = false;        
+        document.getElementById("isRadiation").checked = false;
+
+        document.getElementById("isTemperature").value = 0;
+        document.getElementById("isHeatFlux").value = 0;
+        document.getElementById("isOutdoorTemperature").value = 0;
+        document.getElementById("isAdiabatic").value = 1;
+        document.getElementById("isRadiation").value = 0;
+
+        displayAttributes("isAdiabatic");
+		
+		window.location = 'skp:call_isAdiabatic';		
+    }
+    function call_isRadiation() {
+        document.getElementById("isHeatFlux").checked = false;
+        document.getElementById("isOutdoorTemperature").checked = false;
+        document.getElementById("isAdiabatic").checked = false;
+        document.getElementById("isTemperature").checked = false;
+
+        document.getElementById("isTemperature").value = 0;
+        document.getElementById("isHeatFlux").value = 0;
+        document.getElementById("isOutdoorTemperature").value = 0;
+        document.getElementById("isAdiabatic").value = 0;
+        document.getElementById("isRadiation").value = 1;
+
+        displayAttributes("isRadiation");
+		
+		window.location = 'skp:call_isRadiation';		
+    }
+
+    function displayAttributes(event) {
+        if (event == "isTemperature") {
+            document.getElementById("specifiedTAttributes").style.display = "block";
+            document.getElementById("specifiedqAttributes").style.display = "none";
+            document.getElementById("specifiedToutAttributes").style.display = "none";
+        }
+        else if (event == "isHeatFlux") {
+            document.getElementById("specifiedTAttributes").style.display = "none";
+            document.getElementById("specifiedqAttributes").style.display = "block";
+            document.getElementById("specifiedToutAttributes").style.display = "none";
+        }
+        else if (event == "isOutdoorTemperature") {
+            document.getElementById("specifiedTAttributes").style.display = "none";
+            document.getElementById("specifiedqAttributes").style.display = "none";
+            document.getElementById("specifiedToutAttributes").style.display = "block";
+        }
+        else {
+            document.getElementById("specifiedTAttributes").style.display = "none";
+            document.getElementById("specifiedqAttributes").style.display = "none";
+            document.getElementById("specifiedToutAttributes").style.display = "none";
+        }
+
+    }
+</script>
+<body style="width: 283px; height: 590px">
+    <table class="auto-style17">
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5"><span class="auto-style35">Boundary Type: </span> <em><span class="auto-style35">wall</span></em></td>
+            <td class="auto-style11">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <hr />
+            </td>
+            <td class="auto-style11">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <input id="noSlip" checked="true" name="R1" type="radio" value="1" onclick="call_noSlip()"/> No Slip<br />
+                <input id="slip" name="R2" type="radio" value="0" onclick="call_slip()"/> Slip</td>
+            <td class="auto-style11">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <hr />
+            </td>
+            <td class="auto-style11">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style37"></td>
+            <td class="auto-style38">Thermal</td>
+            <td class="auto-style37"></td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style25" style="border: thin solid #C0C0C0">
+                <table class="auto-style39">
+                    <tr>
+                        <td class="auto-style29">
+                            <input id="isTemperature" name="R3" type="radio" value="0" onclick="call_isTemperature()"/>Temperature
+                </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style29"><input id="isHeatFlux" name="R4" type="radio" value="0" onclick="call_isHeatFlux()"/>Heat Flux</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style29">
+                            <input id="isOutdoorTemperature" name="R7" type="radio" value="0" onclick="call_isOutdoorTemperature()"/>External Convection</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style29">
+                            <input id="isAdiabatic" checked="true" name="R5" type="radio" value="1" onclick="call_isAdiabatic()"/>Adiabatic</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style29">
+                            <input id="isRadiation" name="R6" type="radio" value="0" disabled="disabled" onclick="call_isRadiation()"/>Radiation</td>
+                    </tr>
+                </table>
+            </td>
+            <td class="auto-style11">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <div id="specifiedTAttributes">
+                    <table style="width:100%;">
+                        <tr>
+                            <td>Temperature [k]:</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="TValue" class="auto-style36" type="text" value="300" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="specifiedqAttributes">
+                    <table style="width:100%;">
+                        <tr>
+                            <td>Heat Flux [w/m2]:</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="qValue" class="auto-style36" type="text" value="100" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="specifiedToutAttributes">
+                    <table style="width:100%;">
+                        <tr>
+                            <td>External Temperature [k]:</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="ToutValue" class="auto-style36" type="text" value="300" /></td>
+                        </tr>
+                        <tr>
+                            <td>Wall R-value [k-m2/w]:</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="RValue" class="auto-style36" type="text" value="0.88" /></td>
+                        </tr>
+                        <tr>
+                            <td>Convection Coefficient [w/m2-k]:</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="hinf" class="auto-style36" type="text" value="5" /></td>
+                        </tr>						
+                    </table>
+                </div>
+            </td>
+            <td class="auto-style11">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                &nbsp;</td>
+            <td class="auto-style11">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style10">&nbsp;</td>
+            <td class="auto-style2">
+                <hr />
+                <input id="applyChanges" type="button" value="Apply" onclick="call_applyChanges()"/></td>
+            <td class="auto-style11">&nbsp;</td>
+        </tr>
+    </table>
+    </body>
+</html>
+

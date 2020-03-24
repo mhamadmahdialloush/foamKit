@@ -1,0 +1,181 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            text-align: center;
+        }
+        .auto-style2 {
+            width: 50px;
+        }
+        .auto-style4 {
+            width: 166px;
+        }
+        .auto-style5 {
+            direction: ltr;
+        }
+        .auto-style6 {
+            height: 23px;
+        }
+        .auto-style7 {
+            direction: ltr;
+            height: 23px;
+        }
+        .auto-style8 {
+            width: 60%;
+            height: 408px;
+        }
+        .auto-style9 {
+            height: 22px;
+        }
+        .auto-style11 {
+            height: 21px;
+        }
+        .auto-style12 {
+            width: 200px;
+        }
+    </style>
+    </head>
+<script>
+    function call_select() {
+        var active_locations = [];
+        var list = document.getElementById("location");
+        var listLength = list.options.length;
+        for (var i = 0; i < listLength; i++) {
+            if (list.options[i].selected) {
+                active_locations.push(list.options[i].value);
+            }
+        }
+        return active_locations;
+    }
+    function call_plot() {
+        var active_patches = call_select();
+        window.location = 'skp:call_plot@' + active_patches;
+    }
+    function call_done() {
+        window.location = 'skp:call_done';
+    }
+    function call_new() {
+        var active_locations = [];
+        var list = document.getElementById("location");
+        var listLength = list.options.length;
+        for (var i = 0; i < listLength; i++) {
+            active_locations.push(list.options[i].value);
+        }
+        window.location = 'skp:call_new@' + active_locations;
+	} 
+	function call_show_mesh() {
+	    var checked = document.getElementById("showMesh").checked;
+	    if (checked == true) {
+	        document.getElementById("showMesh").value = 1;
+	    }
+	    else {
+	        document.getElementById("showMesh").value = 0;
+	    }
+	    window.location = 'skp:call_show_mesh';
+	}
+</script>
+<body style="width: 242px; height: 429px">
+    <table class="auto-style8">
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">Plot Velocity Vectors</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">Location:</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td rowspan="2">&nbsp;</td>
+            <td rowspan="2">
+                <select id="location" class="auto-style4" name="D1" multiple="multiple" onclick="call_select()" >
+                    --locations--
+                </select></td>
+            <td class="auto-style11">
+                <input id="new" class="auto-style9" type="button" value="New" onclick="call_new()" /></td>
+            <td rowspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">Scale:</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">
+                <input id="scale" class="auto-style12" type="text" value="1.0" /></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">Skip:</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">
+                <input id="skip" class="auto-style12" type="text" value="0" /></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="2" class="auto-style5">Min Magnitude [m/s]</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="2" class="auto-style5">
+                <input id="min" class="auto-style12" type="text" value="--min--" /></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style6"></td>
+            <td colspan="2" class="auto-style7">Max Magnitude [m/s]</td>
+            <td class="auto-style6"></td>
+        </tr>
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td colspan="2" class="auto-style7">
+                <input id="max" class="auto-style12" type="text" value="--max--" /></td>
+            <td class="auto-style6">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td colspan="2" class="auto-style7">
+                <input id="showMesh" type="checkbox" onclick="call_show_mesh()"/> Display Mesh</td>
+            <td class="auto-style6">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td class="auto-style1" colspan="2">
+                <input id="plot" class="auto-style2" type="button" value="Plot" onclick="call_plot()" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="done" class="auto-style2" type="button" value="Done" onclick="call_done()"/></td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    </body>
+</html>

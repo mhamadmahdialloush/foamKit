@@ -1,0 +1,173 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 336px;
+            height: 156px;
+        }
+        .auto-style11 {
+            text-align: left;
+            font-size: medium;
+            height: 7px;
+        }
+        .auto-style22 {
+            text-align: left;
+        }
+        .auto-style23 {
+            width: 335px;
+            height: 460px;
+        }
+        .auto-style30 {
+            text-align: left;
+            font-size: medium;
+            height: 7px;
+            width: 12px;
+        }
+        .auto-style35 {
+            width: 12px;
+        }
+        .auto-style63 {
+            text-align: center;
+        }
+        .auto-style66 {
+            text-align: left;
+            font-size: medium;
+            height: 7px;
+            width: 11px;
+        }
+        .auto-style69 {
+            width: 11px;
+        }
+        .auto-style70 {
+            width: 12px;
+            height: 13px;
+        }
+        .auto-style72 {
+            width: 11px;
+            height: 13px;
+        }
+        .auto-style73 {
+            width: 160px;
+        }
+        .auto-style84 {
+            height: 13px;
+            text-align: right;
+        }
+        .auto-style85 {
+            width: 12px;
+            height: 16px;
+        }
+        .auto-style86 {
+            height: 16px;
+        }
+        .auto-style87 {
+            width: 11px;
+            height: 16px;
+        }
+        .auto-style88 {
+            width: 12px;
+            height: 1px;
+        }
+        .auto-style89 {
+            height: 1px;
+        }
+        .auto-style90 {
+            width: 11px;
+            height: 1px;
+        }
+        .auto-style95 {
+            width: 125px;
+        }
+        .auto-style96 {
+            height: 1px;
+            width: 170px;
+        }
+        .auto-style97 {
+            height: 21px;
+            width: 297px;
+        }		
+        </style>
+    </head>
+<script>
+
+    function call_applyChanges() {
+        var query = 'skp:call_applyChanges';
+        window.location.href = query;
+    }
+
+</script>
+<body style="width: 336px; height: 458px">
+    <form id="form1" runat="server" class="auto-style23">
+        <table class="auto-style1">
+            <tbody class="auto-style22">
+            <tr>
+                <td class="auto-style30"></td>
+                <td class="auto-style11" colspan="2">Fluid Properties</td>
+                <td class="auto-style66"></td>
+            </tr>
+            <tr>
+                <td class="auto-style35">
+                    </td>
+                <td colspan="2">
+                    <hr />
+                </td>
+                <td class="auto-style69">
+                    </td>
+            </tr>
+            <tr>
+                <td class="auto-style85">
+                    </td>
+                <td colspan="2" class="auto-style86">
+                    </td>
+                <td class="auto-style87">
+                    </td>
+            </tr>
+            <tr>
+                <td class="auto-style88">
+                    </td>
+                <td class="auto-style96">
+                    Name </td>
+                <td class="auto-style89">
+                    Material Type</td>
+                <td class="auto-style90">
+                    </td>
+            </tr>
+            <tr>
+                <td class="auto-style88">
+                    &nbsp;</td>
+                <td class="auto-style96">
+                    <input id="fluidName" class="auto-style73" type="text" value="--fluidName--" /></td>
+                <td class="auto-style89">
+                    <select id="setMaterialType" class="auto-style95" name="D1">
+                        <option value="fluid">fluid</option>
+                        <option value="solid">solid</option>
+                    </select></td>
+                <td class="auto-style90">
+                    &nbsp;</td>
+            </tr>
+			--fluidProperties--
+            <tr>
+                <td class="auto-style70">
+                    &nbsp;</td>
+                <td class="auto-style84" colspan="2">
+                    &nbsp;</td>
+                <td class="auto-style72">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style35">
+                    &nbsp;</td>
+                <td colspan="2" class="auto-style63">
+                    <input id="applyChanges" type="button" value="Apply" onclick="call_applyChanges()"/></td>
+                <td class="auto-style69">
+                    &nbsp;</td>
+            </tr>
+            </table>
+    </form>
+    </body>
+</html>

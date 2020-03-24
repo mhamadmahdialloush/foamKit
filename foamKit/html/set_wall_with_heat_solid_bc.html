@@ -1,0 +1,159 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style2 {
+            text-align: center;
+            width: 383px;
+        }
+        .auto-style5 {
+            width: 383px;
+        }
+        .auto-style10 {
+            text-align: center;
+            width: 11px;
+        }
+        .auto-style11 {
+            width: 11px;
+        }
+        .auto-style17 {
+            width: 60%;
+            height: 289px;
+        }
+        .auto-style25 {
+            text-align: right;
+            width: 383px;
+        }
+        .auto-style29 {
+            text-align: left;
+        }
+        .auto-style34 {
+            width: 180px;
+        }
+        .auto-style35 {
+            font-size: medium;
+        }
+        </style>
+    </head>
+<script>
+    function call_applyChanges() {
+        window.location = 'skp:call_applyChanges';
+    }
+
+    function call_isTemperature() {
+        document.getElementById("isHeatFlux").checked = false;
+        document.getElementById("isAdiabatic").checked = false;
+
+        document.getElementById("isTemperature").value = 1;
+        document.getElementById("isHeatFlux").value = 0;
+        document.getElementById("isAdiabatic").value = 0;
+
+        document.getElementById("TValue").disabled = false;
+        document.getElementById("thermalType").innerText = "Temperature [k]:";
+        document.getElementById("TValue").value = "300";
+    }
+    function call_isHeatFlux() {
+        document.getElementById("isTemperature").checked = false;
+        document.getElementById("isAdiabatic").checked = false;
+
+        document.getElementById("isTemperature").value = 0;
+        document.getElementById("isHeatFlux").value = 1;
+        document.getElementById("isAdiabatic").value = 0;
+
+        document.getElementById("TValue").disabled = false;
+        document.getElementById("thermalType").innerText = "Heat Flux [w/m2]:";
+        document.getElementById("TValue").value = "20";
+    }
+    function call_isAdiabatic() {
+        document.getElementById("isHeatFlux").checked = false;
+        document.getElementById("isTemperature").checked = false;
+
+        document.getElementById("isTemperature").value = 0;
+        document.getElementById("isHeatFlux").value = 0;
+        document.getElementById("isAdiabatic").value = 1;
+
+        document.getElementById("TValue").disabled = true;
+        document.getElementById("thermalType").innerText = "";
+        document.getElementById("TValue").value = "";
+    }
+</script>
+<body style="width: 210px; height: 302px">
+    <table class="auto-style17">
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5"><span class="auto-style35">Boundary Type: </span> <em><span class="auto-style35">wall</span></em></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">Thermal</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style25" style="border: thin solid #C0C0C0">
+                <table style="width:100%;">
+                    <tr>
+                        <td class="auto-style29">
+                            <input id="isTemperature" name="R3" type="radio" value="V1" onclick="call_isTemperature()"/>Temperature
+                </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style29"><input id="isHeatFlux" name="R4" type="radio" value="V1" onclick="call_isHeatFlux()"/>Heat Flux</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style29">
+                            <input id="isAdiabatic" checked="true" name="R5" type="radio" value="V1" onclick="call_isAdiabatic()"/>Adiabatic</td>
+                    </tr>
+                    </table>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5" id="thermalType">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                            <input id="TValue" class="auto-style34" type="text" disabled="disabled" /></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style11">&nbsp;</td>
+            <td class="auto-style5">
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style10">&nbsp;</td>
+            <td class="auto-style2">
+                <input id="applyChanges" type="button" value="Apply" onclick="call_applyChanges()"/></td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    </body>
+</html>

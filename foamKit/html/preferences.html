@@ -1,0 +1,94 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            text-align: center;
+        }
+        .auto-style2 {
+            text-align: right;
+        }
+        .auto-style4 {
+            font-size: medium;
+        }
+        .auto-style7 {
+            width: 378px;
+        }
+        .auto-style8 {
+            width: 378px;
+        }
+    </style>
+    </head>
+<script>
+    function call_applyChanges() {
+        window.location = "skp:call_applyChanges";
+    }
+</script>
+<body style="width: 574px; height: 250px">
+    <table style="width:100%;">
+        <tr>
+            <td>&nbsp;</td>
+            <td class="auto-style4">Preferences</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td>OpenFOAM Version</td>
+                        <td class="auto-style2">
+                            <input id="OFVersion" class="auto-style7" type="text" value="1612" /></td>
+                    </tr>
+                    <tr>
+                        <td>OpenFOAM Directory</td>
+                        <td class="auto-style2">
+                            <input id="OFDir" type="file" class="auto-style8" value="C:\Program Files (x86)\ESI\OpenFOAM\1612\Windows\Scripts" disabled="disabled"/></td>
+                    </tr>
+                    <tr>
+                        <td>ParaView Directory</td>
+                        <td class="auto-style2">
+                            <input id="PVDir" type="file" class="auto-style8" value="C:\Program Files\ParaView 5.2.0-Qt4-OpenGL2-Windows-64bit\bin" style="background-color: #FFFFFF"/></td>
+                    </tr>
+                    <tr>
+                        <td>Project Directory</td>
+                        <td class="auto-style2">
+                            <input id="ProjectDir" type="file" class="auto-style8" value="C:\Users\Mahdi\OpenFOAM\Sketchup" disabled="disabled"/></td>
+                    </tr>
+                </table>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><em>Note: In this version, the user may only change the OpenFOAM version and ParaView application directory.</em></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <hr />
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td class="auto-style1">
+                <input id="apply" type="button" value="Apply" onclick="call_applyChanges()"/></td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    </body>
+</html>
+
