@@ -3,7 +3,10 @@ Sketchup Extension which connects your geomtery to OpenFOAM. You can run an OF s
 
 For example, you may draw a geometry on Sketchup (fluid in a pipe, air volume in room, air enclosure around an airfoil, etc.), mesh it with snappyHexMesh from the OpenFOAM library, and run it using any of the standard solvers in OpenFOAM. All of these steps are made within Sketchup, and no need to refer to text files to run the OpenFOAM simulation.
 
-For making the extension available, the code has to be downloaded and placed in the Sketchup extensions directory. On the other hand, the user has to have already these package installed on his machine:
+For making the extension available, the code has to be downloaded and placed in the Sketchup extensions directory:
+"C:\Users\username\AppData\Roaming\SketchUp\SketchUp 2016\SketchUp\Plugins\*"
+
+On the other hand, the user has to have already these package installed on his machine:
 
 1) Download openfoam for windows (includes docker and oracle) from this link:
 
